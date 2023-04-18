@@ -1,0 +1,14 @@
+__IGNORE__=/\s+/
+name=/\w[\w|\d|\-|_]*/
+assign=/=/
+comma=/,/
+endrule=/;/
+or=/\|/
+loptional=/\[/
+roptional=/\]/
+lrepeat=/\{/
+rrepeat=/\}/
+lgroup=/\((?=[^\*])/
+rgroup=/\)/
+lcomment=/\(\*/
+rcomment=/\*\)/

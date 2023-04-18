@@ -1,0 +1,9 @@
+__FINAL__ = expression;
+expression = bitXorExpression, [ { bitor, bitXorExpression } ];
+bitXorExpression = bitAndExpression, [ { bitxor, bitAndExpression } ];
+bitAndExpression = shiftExpression, [ { bitand, shiftExpression } ];
+shiftExpression = addExpression, [ { ( lshift | rshift), addExpression } ];
+addExpression = timesExpression, [ { ( plus | minus), timesExpression } ];
+timesExpression = term, [ { ( times | over | mod), term } ];
+term = number | (lpar, expression, rpar);
+number = hexnumber | decimalnumber;

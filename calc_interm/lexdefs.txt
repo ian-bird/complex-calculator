@@ -1,0 +1,15 @@
+__IGNORE__=/\s+/
+plus=/\+/
+minus=/\-/
+times=/\*/
+over=/\//
+bitand=/&/
+bitxor=/\^/
+mod=/%/
+bitor=/\|\|/
+rshift=/>>/
+lshift=/<</
+decimalnumber=/\d+\b/
+hexnumber=/0x\h+\b/
+lpar=/\(/
+rpar=/\)/

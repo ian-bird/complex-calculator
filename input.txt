@@ -1,0 +1,88 @@
+#define STEP_LIMIT 5
+
+
+/* E is on 3 off 1,
+** S is on 1 off 3,
+** and set to line up with the middle of E.
+*/
+circuit clock()
+{
+  var set,enable;
+
+  if(enable < 3)
+  {
+    enable = enable + 1;
+  }
+  else
+  {
+    enable = 0;
+  }
+
+  if(enable == 2)
+  {
+    set = 1;
+  }
+  else
+  {
+    set = 0;
+  }
+
+  return set,enable;
+}
+
+/* rsnor memory cell
+** saves when set>0
+** outputs when enable>0
+*/
+circuit memcell(set,enable,input)
+{
+  var mem, output;
+
+  var memcell_set, memcell_enable = clock();
+
+  if(set > 0)
+  {
+    mem = input;
+  }
+  else
+  {
+    mem = mem;
+  }
+
+  if(enable > 0)
+  {
+    output = mem;
+  }
+
+  return output;
+}
+
+circuit counter(enable)
+{
+  var mem, output;
+
+  var counter_set, counter_enable = clock();
+
+  var reg = memcell(counter_set, counter_enable, mem);
+
+  if(mem < STEP_LIMIT * 2)
+  {
+    if(mem % 2 == 0 && enable == 0)
+    {
+      mem = mem + 1;
+    }
+
+    if(mem % 2 == 1 && enable == 1)
+    {
+      mem = mem + 1;
+    }
+  }
+  else
+  {
+    mem = 0;
+  }
+
+  output = mem / 2 ;
+
+  return output;
+}
